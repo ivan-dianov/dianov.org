@@ -5,8 +5,8 @@
     <description></description>
     <link>http://dianov.org/</link>
     <atom:link href="http://dianov.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jun 2016 19:50:15 +0000</pubDate>
-    <lastBuildDate>Mon, 20 Jun 2016 19:50:15 +0000</lastBuildDate>
+    <pubDate>Mon, 20 Jun 2016 19:55:44 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Jun 2016 19:55:44 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -124,6 +124,10 @@ defaults:
 &lt;ul&gt;
   &lt;li&gt;При значительном различии высоты столбцов, скажем, 1:100, придётся очень долго прогручивать страницу, чтобы короткий столбец немного сдвинулся. Не удивительно, что в контакте другая реализация: страницы там бесконечные.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/sketches03.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/forestryio/images/Снимок экрана 2016-06-20 в 20.46.45.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 10 Aug 2015 00:00:00 +0000</pubDate>
         <link>http://dianov.org/blog/scroll-with-no-hole/</link>
