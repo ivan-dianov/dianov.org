@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  	<title>Разработка сайтов компаний: Блог</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://dianov.org/">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="wrapper">
+      <div class="header">
+          <div class="avatar">
+    <a href="http://dianov.org">
+      <img src="http://dianov.org/media/img/photo.png" alt="">
+    </a>
+  </div>
+  <div class="contacts">
+    <div class="name">Дианов Иван</div>
+    - - -
+    <div class="phone">+7 905 394-5-394</div>
+    <div class="email"><a href="mailto:ivan@dianov.org">ivan@dianov.org</a></div>
+  </div>
+  <nav>
+
+    
+      
+    
+      
+    
+      
+      <!--<a class="page-link" -->
+        <!-- -->
+        <!--class="active" -->
+        <!-- -->
+        <!--href="/">Блог</a>-->
+        
+          <li class="active">
+            <a href="/" class="active">Блог</a>
+          </li>
+        
+      
+    
+      
+    
+      
+      <!--<a class="page-link" -->
+        <!-- -->
+        <!--href="/about/">Обо мне</a>-->
+        
+          <li>
+            <a href="/about/">Обо мне</a>
+          </li>
+        
+      
+    
+  </nav>
+
+      </div>
+      <div class="page-content">
+        <div class="home">
+
+  <h1 class="page-heading">Блог</h1>
+
+  <div class="posts">
+    
+      <div class="post">
+        <h2>
+          <a class="post-link" href="/blog/jekyll-include-exclude/">Making customer specific site versions</a>
+        </h2>
+        <span class="post-meta">Jan 25, 2016</span>
+        <p>UPD: bad approach, don’t use it 😶</p>
+
+<p>Jekyll provides great tool to keep separate folders with customer specific data. You can select one of them withing a single line in a config:</p>
+
+<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">exclude</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">_cards/</span>
+  <span class="pi">-</span> <span class="s">_areas/</span>
+
+<span class="s">include</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">.htaccess</span>
+  <span class="pi">-</span> <span class="s">client1</span> 
+</code></pre>
+</div>
+
+<p>note, that is mask, so it matches to all files and folders containing</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>client1,
+/client1/,
+/client11/,
+/_cards/client1/,
+client1.md
+</code></pre>
+</div>
+
+<p>Masks act a bit weiredly: <code class="highlighter-rouge">client*</code> will match to <code class="highlighter-rouge">client1/</code>, but <code class="highlighter-rouge">client*/</code> will not.</p>
+
+<p>Unfortunately jekyll doesn’t process collections nested to folders like <code class="highlighter-rouge">/client1/_cards</code>, it would be the most elegant solution though.</p>
+
+      </div>
+    
+      <div class="post">
+        <h2>
+          <a class="post-link" href="/blog/jekyll-nice-urls/">Красивые адреса страниц на Jekyll</a>
+        </h2>
+        <span class="post-meta">Oct 31, 2015</span>
+        <p>Адреса материалов можно настраивать тремя способами:</p>
+
+<ul>
+  <li>Меняя путь к исходному файлу материала. Например, файл <code class="highlighter-rouge">/blog/hello.md</code> будет сконвертирован в <code class="highlighter-rouge">/_site/blog/hello.html</code></li>
+  <li>Меняя пермалинк во фронтматтере у файла страницы. Где бы исходник материала не находился, можно задать</li>
+</ul>
+
+
+      </div>
+    
+      <div class="post">
+        <h2>
+          <a class="post-link" href="/blog/scroll-with-no-hole/">Скролл без дырок</a>
+        </h2>
+        <span class="post-meta">Aug 10, 2015</span>
+        <p>Порою на сайтах контент распологается в несколько колонок различной высоты, при прокрутке под короткими столбцами появляются пустые места. КПД страницы падает.</p>
+
+<p>Один из способов решения: останавливать скролл короткого столбца. Он реализован вконтакте на странице поиска человека.</p>
+
+
+      </div>
+    
+      <div class="post">
+        <h2>
+          <a class="post-link" href="/blog/hello/">hello world</a>
+        </h2>
+        <span class="post-meta">Jun 17, 2015</span>
+        <p>Только что запустил свой первый блог на <a href="http://jekyllrb.com/">Jekyll</a> и <a href="https://pages.github.com/">Github pages</a>.</p>
+
+<!--Сделал бы это быстрее, если бы знал о некоторых тонкостях:-->
+
+<!--* По-умолчанию, сайт созданный через `$ jekyll new new-site` не будет корректно отображаться на Github Pages, в настройках надо было поменять:-->
+
+<!--baseurl: /dianov.org  -->
+<!--url: http://illus0r.github.io/dianov.org-->
+
+
+      </div>
+    
+  </div>
+
+  <p class="rss-subscribe">Подпишитесь на <a href="/feed.xml">РСС</a></p>
+
+</div>
+
+
+      </div>
+      <!--<footer class="site-footer">
+</footer>
+-->
+      <!--contact form plays role of footer-->
+
+    </div>
+
+    <div class="contact-form">
+  <div class="wrapper">
+    <form action="http://formspree.io/zor667@gmail.com" method="POST">
+      
+      <label>Расскажите о своём заказе</label>
+      <textarea name="message" placeholder="Приветствую, Иван!&NewLine;Сколько будет стоить разработка сайта для..?"></textarea>
+      <label>или просто отправьте телефон — перезвоню в течение суток.</label>  
+      <input type="text" name="phone" placeholder="+79111111111">
+      <input type="submit" id="contact-form-submit" value="Отправить сообщение">
+      <input type="hidden" name="_next" value="http://dianov.org/thanks.html" />
+    </form>
+  </div>
+</div>
+
+    <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter31538213 = new Ya.Metrika({ id:31538213, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/31538213" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+
+  </body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  	<title>Разработка сайтов компаний: Красивые адреса страниц на Jekyll</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://dianov.org/blog/jekyll-nice-urls/">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="wrapper">
+      <div class="header">
+          <div class="avatar">
+    <a href="http://dianov.org">
+      <img src="http://dianov.org/media/img/photo.png" alt="">
+    </a>
+  </div>
+  <div class="contacts">
+    <div class="name">Дианов Иван</div>
+    - - -
+    <div class="phone">+7 905 394-5-394</div>
+    <div class="email"><a href="mailto:ivan@dianov.org">ivan@dianov.org</a></div>
+  </div>
+  <nav>
+
+    
+      
+    
+      
+    
+      
+      <!--<a class="page-link" -->
+        <!-- -->
+        <!--href="/">Блог</a>-->
+        
+          <li>
+            <a href="/">Блог</a>
+          </li>
+        
+      
+    
+      
+    
+      
+      <!--<a class="page-link" -->
+        <!-- -->
+        <!--href="/about/">Обо мне</a>-->
+        
+          <li>
+            <a href="/about/">Обо мне</a>
+          </li>
+        
+      
+    
+  </nav>
+
+      </div>
+      <div class="page-content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Красивые адреса страниц на Jekyll</h1>
+    <p class="post-meta">Oct 31, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Адреса материалов можно настраивать тремя способами:</p>
+
+<ul>
+  <li>Меняя путь к исходному файлу материала. Например, файл <code class="highlighter-rouge">/blog/hello.md</code> будет сконвертирован в <code class="highlighter-rouge">/_site/blog/hello.html</code></li>
+  <li>Меняя пермалинк во фронтматтере у файла страницы. Где бы исходник материала не находился, можно задать <br />
+<!--break-->
+`
+—
+permalink: /blog/hello.html
+—
+`
+и он будет конвертирован в файл доступный по указанному адресу.</li>
+  <li>В настройках генератора _config.yml<br />
+самый общий способ. Удобно выбрать страницы по определённому признаку и прописать для них настройки адресов по умолчанию. Получаем такие плюсы:
+    <ul>
+      <li>Исходные файлы упорядочены по папкам, как нам удобно</li>
+      <li>Адреса при этом красивые</li>
+      <li>Можем при необходимости поменять их быстро и везде.
+И минус: настраивать сложнее, можно по неосторожности переместить все материалы сайта, поломав внутренние и внешние ссылки, что плохо для СЕО и вообще.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Если с первыми двумя способами всё понятно, то третий заработал у меня не сразу. Я хотел, чтобы страницы были доступны по адресам вида <code class="highlighter-rouge">/about.html</code>, а страницы блога <code class="highlighter-rouge">/blog/hello.html</code>. Первым делом попробовал задать пермалинки так же, как и другие дефолтные метаданные:
+`
+defaults:
+  - 
+    scope:
+      type: posts
+    values:
+      permalink: /blog/:title
+`
+Но джекилл воспринял :title не как переменную, а как текст, в результати все страницы получили один и тож же адрес “/blog/:title”. Я так и не понял, баг это или фича. Заработал другой подход:
+`
+permalink: /:categories/:title
+`
+Тут мы задаём пермалинк для всех материалов сайта. Если у страницы есть категория, то она будет лежать в папке с названием этой категории. Отлично!
+Остаётся добавить категорию blog для всех постов по умолчанию</p>
+
+<p><code class="highlighter-rouge">
+permalink: /:categories/:title
+defaults:
+  - 
+    scope:
+      type: posts
+    values:
+      categories: blog
+</code></p>
+
+  </article>
+  
+  <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//dianov.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+      </div>
+      <!--<footer class="site-footer">
+</footer>
+-->
+      <!--contact form plays role of footer-->
+
+    </div>
+
+    <div class="contact-form">
+  <div class="wrapper">
+    <form action="http://formspree.io/zor667@gmail.com" method="POST">
+      
+      <label>Расскажите о своём заказе</label>
+      <textarea name="message" placeholder="Приветствую, Иван!&NewLine;Сколько будет стоить разработка сайта для..?"></textarea>
+      <label>или просто отправьте телефон — перезвоню в течение суток.</label>  
+      <input type="text" name="phone" placeholder="+79111111111">
+      <input type="submit" id="contact-form-submit" value="Отправить сообщение">
+      <input type="hidden" name="_next" value="http://dianov.org/thanks.html" />
+    </form>
+  </div>
+</div>
+
+    <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter31538213 = new Ya.Metrika({ id:31538213, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/31538213" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+
+  </body>
+
+</html>

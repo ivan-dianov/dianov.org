@@ -1,30 +1,157 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml" />
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Разработка сайтов компаний</title>
+    <description></description>
+    <link>http://dianov.org/</link>
+    <atom:link href="http://dianov.org/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 20 Jun 2016 18:26:33 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Jun 2016 18:26:33 +0000</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Making customer specific site versions</title>
+        <description>&lt;p&gt;UPD: bad approach, don’t use it 😶&lt;/p&gt;
+
+&lt;p&gt;Jekyll provides great tool to keep separate folders with customer specific data. You can select one of them withing a single line in a config:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_cards/&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_areas/&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.htaccess&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;client1&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;note, that is mask, so it matches to all files and folders containing&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;client1,
+/client1/,
+/client11/,
+/_cards/client1/,
+client1.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Masks act a bit weiredly: &lt;code class=&quot;highlighter-rouge&quot;&gt;client*&lt;/code&gt; will match to &lt;code class=&quot;highlighter-rouge&quot;&gt;client1/&lt;/code&gt;, but &lt;code class=&quot;highlighter-rouge&quot;&gt;client*/&lt;/code&gt; will not.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately jekyll doesn’t process collections nested to folders like &lt;code class=&quot;highlighter-rouge&quot;&gt;/client1/_cards&lt;/code&gt;, it would be the most elegant solution though.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Jan 2016 00:00:00 +0000</pubDate>
+        <link>http://dianov.org/blog/jekyll-include-exclude/</link>
+        <guid isPermaLink="true">http://dianov.org/blog/jekyll-include-exclude/</guid>
+        
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Красивые адреса страниц на Jekyll</title>
+        <description>&lt;p&gt;Адреса материалов можно настраивать тремя способами:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Меняя путь к исходному файлу материала. Например, файл &lt;code class=&quot;highlighter-rouge&quot;&gt;/blog/hello.md&lt;/code&gt; будет сконвертирован в &lt;code class=&quot;highlighter-rouge&quot;&gt;/_site/blog/hello.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Меняя пермалинк во фронтматтере у файла страницы. Где бы исходник материала не находился, можно задать &lt;br /&gt;
+&lt;!--break--&gt;
+`
+—
+permalink: /blog/hello.html
+—
+`
+и он будет конвертирован в файл доступный по указанному адресу.&lt;/li&gt;
+  &lt;li&gt;В настройках генератора _config.yml&lt;br /&gt;
+самый общий способ. Удобно выбрать страницы по определённому признаку и прописать для них настройки адресов по умолчанию. Получаем такие плюсы:
+    &lt;ul&gt;
+      &lt;li&gt;Исходные файлы упорядочены по папкам, как нам удобно&lt;/li&gt;
+      &lt;li&gt;Адреса при этом красивые&lt;/li&gt;
+      &lt;li&gt;Можем при необходимости поменять их быстро и везде.
+И минус: настраивать сложнее, можно по неосторожности переместить все материалы сайта, поломав внутренние и внешние ссылки, что плохо для СЕО и вообще.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Если с первыми двумя способами всё понятно, то третий заработал у меня не сразу. Я хотел, чтобы страницы были доступны по адресам вида &lt;code class=&quot;highlighter-rouge&quot;&gt;/about.html&lt;/code&gt;, а страницы блога &lt;code class=&quot;highlighter-rouge&quot;&gt;/blog/hello.html&lt;/code&gt;. Первым делом попробовал задать пермалинки так же, как и другие дефолтные метаданные:
+`
+defaults:
+  - 
+    scope:
+      type: posts
+    values:
+      permalink: /blog/:title
+`
+Но джекилл воспринял :title не как переменную, а как текст, в результати все страницы получили один и тож же адрес “/blog/:title”. Я так и не понял, баг это или фича. Заработал другой подход:
+`
+permalink: /:categories/:title
+`
+Тут мы задаём пермалинк для всех материалов сайта. Если у страницы есть категория, то она будет лежать в папке с названием этой категории. Отлично!
+Остаётся добавить категорию blog для всех постов по умолчанию&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+permalink: /:categories/:title
+defaults:
+  - 
+    scope:
+      type: posts
+    values:
+      categories: blog
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 31 Oct 2015 00:00:00 +0000</pubDate>
+        <link>http://dianov.org/blog/jekyll-nice-urls/</link>
+        <guid isPermaLink="true">http://dianov.org/blog/jekyll-nice-urls/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Скролл без дырок</title>
+        <description>&lt;p&gt;Порою на сайтах контент распологается в несколько колонок различной высоты, при прокрутке под короткими столбцами появляются пустые места. КПД страницы падает.&lt;/p&gt;
+
+&lt;p&gt;Один из способов решения: останавливать скролл короткого столбца. Он реализован вконтакте на странице поиска человека.
+&lt;!--break--&gt;&lt;/p&gt;
+
+&lt;p&gt;На &lt;a href=&quot;http://arzamas.academy/&quot;&gt;арзамасе&lt;/a&gt; другое решение — что-то вроде паралакса: столбцы скроллятся с разной скоростью.&lt;/p&gt;
+
+&lt;p&gt;Плюсы:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Плавно и красиво&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Минусы:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;При значительном различии высоты столбцов, скажем, 1:100, придётся очень долго прогручивать страницу, чтобы короткий столбец немного сдвинулся. Не удивительно, что в контакте другая реализация: страницы там бесконечные.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 10 Aug 2015 00:00:00 +0000</pubDate>
+        <link>http://dianov.org/blog/scroll-with-no-hole/</link>
+        <guid isPermaLink="true">http://dianov.org/blog/scroll-with-no-hole/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>hello world</title>
+        <description>&lt;p&gt;Только что запустил свой первый блог на &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; и &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--Сделал бы это быстрее, если бы знал о некоторых тонкостях:--&gt;
+
+&lt;!--* По-умолчанию, сайт созданный через `$ jekyll new new-site` не будет корректно отображаться на Github Pages, в настройках надо было поменять:--&gt;
+
+&lt;!--baseurl: /dianov.org  --&gt;
+&lt;!--url: http://illus0r.github.io/dianov.org--&gt;
+
+</description>
+        <pubDate>Wed, 17 Jun 2015 00:00:00 +0000</pubDate>
+        <link>http://dianov.org/blog/hello/</link>
+        <guid isPermaLink="true">http://dianov.org/blog/hello/</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
   </channel>
 </rss>
