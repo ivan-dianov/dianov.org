@@ -1,0 +1,46 @@
+# Site settings
+title: Разработка сайтов компаний
+email: ivan@dianov.org
+url: http://dianov.org # the base hostname & protocol for your site
+#url: http://localhost:3002 # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+excerpt_separator: <!--break-->
+
+
+defaults:
+  - 
+    scope:
+      path: ""
+    values:
+      layout: page
+  - 
+    scope:
+      type: posts
+    values:
+      layout: post
+      permalink: /blog/:title/
+      published: true
+  
+
+prose:
+  # rooturl: "_posts"
+  media: "media"
+  siteurl: "http://dianov.org"
+  metadata:
+    _posts:
+      - name: "published"
+        field:
+          element: 'hidden'
+          value: true
+      - name: "title"
+        field:
+          element: "text"
+          label: "title"
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"

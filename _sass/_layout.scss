@@ -1,0 +1,144 @@
+*{
+  font-family: $base-font-family;
+  line-height: $base-line-height;
+}
+
+body{
+  margin: 0;
+  font-size: $font-size-base;
+}
+
+h1, h2{
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  font-size: $font-size-big;
+  background: url(/media/img/hr.png) no-repeat left bottom;
+  @include media(max-width $mama-bear, 1) {
+    background: none;
+    text-align: center;
+  }
+}
+h2{
+  font-weight: normal;
+}
+
+a{
+  color: $col-primary;
+  &:active{
+    color: $col-primary-light;
+  }
+  &:visited{
+    color: $col-primary-dark;
+  }
+}
+
+.wrapper{
+  @include outer-container;
+  @include media(max-width $mama-bear, 1) {
+    padding: 0 1em;
+  }
+  max-width: $_max-width;
+}
+
+
+.page-content{
+  @include media(max-width $mama-bear, 1) {
+    @include span-columns(1);
+    margin-top: 0;
+  }
+  @include span-columns(8);
+  @include omega;
+  margin-top: 30px;
+  ul{
+    list-style: none;
+    padding-left: 1em;
+    li{
+      position: relative;
+      &:before{
+        content: '-';
+        left: -0.7em;
+        position: absolute;
+      }
+    }
+  }
+  .headlight{
+    background: $col-primary-light;
+    padding: 1px 1em;
+  }
+  .phone, .email{
+    @include media(max-width $mama-bear, 1) {
+      text-align: center;
+    }    
+  }
+  .phone{
+    padding: 0 36px 0 50px;
+    height: 38px;
+    background: url(/media/img/phone.png) no-repeat;
+    font-size: $font-size-big;
+    display: inline-block;
+    p{
+      margin: 0;
+    }
+  }
+  .email{
+    display: inline-block;
+  }
+}
+
+.contact-form{
+  margin-top: 30px;
+  @include outer-container;
+  background: $col-primary-light;
+  form{
+    @include media(max-width $mama-bear, 1) {
+      @include span-columns(1);
+      @include shift(0);
+      padding-bottom: 30px;
+    }
+    @include span-columns(8);
+    @include shift(4);
+    padding: 30px 0 100px;
+    position: relative;
+    max-width: $_max-width;
+    /*overflow: hidden;*/
+    &:after{
+      @include media(max-width $mama-bear, 1) {
+        display: none;
+      }
+      bottom: 40px;
+      right: -50px;
+      /*left: 184px;*/
+      content: ' ';
+      display: block;
+      width: 443px;
+      height: 183px;
+      pointer-events: none;
+      position: absolute;
+      background: url(/media/img/plane.png) no-repeat;
+
+
+    }
+    textarea, input{
+      border: 3px solid #bdcdd4;
+      padding: 0.2em 0.4em;
+      font-size: inherit;
+      display: block;
+      margin: 0.3em 0 0.8em;
+    }
+    textarea{
+      width: 100%;
+    }
+    input{
+      height: 40px;
+    }
+    input[type='text']{
+      width: 150px;
+    }
+    input[type='submit']{
+      background: $col-primary;
+      border: none;
+      color: white;
+      padding:0 1em;
+    }
+  }
+}
