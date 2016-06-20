@@ -5,8 +5,8 @@
     <description></description>
     <link>http://dianov.org/</link>
     <atom:link href="http://dianov.org/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jun 2016 18:26:33 +0000</pubDate>
-    <lastBuildDate>Mon, 20 Jun 2016 18:26:33 +0000</lastBuildDate>
+    <pubDate>Mon, 20 Jun 2016 19:50:15 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Jun 2016 19:50:15 +0000</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -105,7 +105,7 @@ defaults:
       </item>
     
       <item>
-        <title>Скролл без дырок</title>
+        <title>Скролл без дырок!!!</title>
         <description>&lt;p&gt;Порою на сайтах контент распологается в несколько колонок различной высоты, при прокрутке под короткими столбцами появляются пустые места. КПД страницы падает.&lt;/p&gt;
 
 &lt;p&gt;Один из способов решения: останавливать скролл короткого столбца. Он реализован вконтакте на странице поиска человека.
